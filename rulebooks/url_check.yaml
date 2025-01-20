@@ -1,0 +1,13 @@
+- name: Example
+  hosts: all
+  gather_facts: false
+  sources:
+    - ansible.eda.url_check:
+        urls:
+          - https://google.com
+        delay: 60
+  rules:
+    - name: r1
+      condition: event.meta is defined
+      action:
+        debug:

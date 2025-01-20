@@ -1,0 +1,15 @@
+- name: Watch for new records
+  hosts: localhost
+  sources:
+  - snow_plugin_custom:
+      instance: https://dev189924.service-now.com/
+      username: admin
+      password: s1*NR2cdDkX-
+      table: incident
+      interval: 1
+
+  rules:
+  - name: New record created
+    condition: event.sys_id is defined
+    action:
+      debug:
